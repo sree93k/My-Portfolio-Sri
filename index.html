@@ -11,6 +11,7 @@
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
     
   </head>
 
@@ -149,7 +150,7 @@
         <span class="section__subtitle">My introduction</span>
 
         <div class="about__container container grid">
-          <img src="about.webp" alt="" class="about__img" />
+          <img src="about.webp" alt="sreekuttan profile" class="about__img" />
 
           <div class="about__data">
             <p class="about__description">
@@ -277,7 +278,7 @@
                 <div class="skills__data">
                   <div class="skills__titles">
                     <h3 class="skills__name">OS</h3>
-                    <span class="skills__nuber">100%</span>
+                    <span class="skills__nuber">70%</span>
                   </div>
                   <div class="skills__bar">
                     <span class="skills__percentage skills__firebase"></span>
@@ -286,7 +287,7 @@
                 <div class="skills__data">
                   <div class="skills__titles">
                     <h3 class="skills__name">Assembling</h3>
-                    <span class="skills__nuber">1000%</span>
+                    <span class="skills__nuber">80%</span>
                   </div>
                   <div class="skills__bar">
                     <span class="skills__percentage skills__python"></span>
@@ -563,7 +564,7 @@
       <div class="swiper-wrapper">
         <!-- ------------------------portfollio 1-------------------- -->
         <div class="portfolio__content grid swiper-slide">
-          <img src="paytm.webp" class="portfolio__img">
+          <img src="paytm.webp" class="portfolio__img" alt="paytm">
 
           <div class="portfolio__data">
             <h3 class="portfolio__title">Paytm</h3>
@@ -577,7 +578,7 @@
 
         <!-- ------------------------portfollio 2-------------------- -->
         <div class="portfolio__content grid swiper-slide">
-          <img src="netflix.webp" class="portfolio__img">
+          <img src="netflix.webp" class="portfolio__img" alt="netflix">
 
           <div class="portfolio__data">
             <h3 class="portfolio__title">Netflix</h3>
@@ -643,23 +644,23 @@
       <form id="submit-form" action="" class="contact__form grid">
         <div class="contact__inputs grid">
           <div class="contact__content">
-            <label for="" class="content__label">Name</label>
-            <input type="text" name="name" placeholder="Your Name" class="contact__input">
+            <label for=""  class="content__label">Name</label>
+            <input type="text" name="name" id="user_name" placeholder="Your Name" class="contact__input">
           </div>
 
           <div class="contact__content">
-            <label for="" class="content__label">Email</label>
-            <input type="Email" name="email" placeholder="Your Mail ID" class="contact__input">
+            <label for=""  class="content__label">Email</label>
+            <input type="Email" id="user_mail" name="email" placeholder="Your Mail ID" class="contact__input">
           </div>
         
 
         <div class="contact__content">
-            <label for="" class="content__label">Message</label>
-            <textarea name="message" placeholder="Write Something" cols="0" rows="7" class="contact__input"></textarea>
+            <label for=""  class="content__label">Message</label>
+            <textarea name="message" id="user_msg" placeholder="Write Something" cols="0" rows="7" class="contact__input"></textarea>
           </div>
 
           <div>
-            <input  class="button button--flex uil uil-message button__icon btn-primary " type="submit" value="Send Message" style="border-style: none;">
+            <input  class="button button--flex uil uil-message button__icon btn-primary " onclick="validate()" type="submit" value="Send Message" style="border-style: none;">
               
             </div>  
           </div>
@@ -717,7 +718,26 @@
 
     <script src="assets/ptj.js"></script>
     <script>
-      $("#submit-form").submit((e)=>{
+    
+
+      function validate()
+      {
+        var name=document.getElementById("user_name").value
+        var email=document.getElementById("user_mail").value
+        var message=document.getElementById("user_msg").value
+        var reg_name= /^([a-zA-Z]+)?$/;
+        var reg_mail= /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/;
+        
+        var result1=reg_name.test(name)
+        var result2=reg_mail.test(email)
+        console.log(result1,result2)
+        if(result2==false || name=="" || message=="")
+        {
+          alert("Sorry! Invalid Details Entered")
+        }
+        else
+        {
+          $("#submit-form").submit((e)=>{
           e.preventDefault()
           $.ajax({
               url:"https://script.google.com/macros/s/AKfycbx-FrRJKMFR5Y4Ov7YRXz1udd3yC5CoNtUSXD4-SJtCRU-I7egjkJfhYAAtQ0SGYhCV/exec",
@@ -734,6 +754,14 @@
               }
           })
       })
+
+
+
+        }
+
+      }
+
+
   </script>
   </body>
 </html>
